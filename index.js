@@ -1,30 +1,29 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
-const postsRouter = require('./routes/routes')
+const {list, show, create, update, remove} = require('./controllers/posts')
 
 const PORT = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
-app.use('/posts', postsRouter)
 
-// // list route
+// list route
 
-// app.get("/posts/myposts", list );
+app.get("/posts/myposts", list );
 
-// //show route
-// app.get("/posts/myposts/:id", show);
+//show route
+app.get("/posts/myposts/:id", show);
 
-// //post route
-// app.post("/posts/myposts", create);
+//post route
+app.post("/posts/myposts", create);
 
-// // update route
+// update route
 
-// app.put("/posts/myposts/:id", update);
+app.put("/posts/myposts/:id", update);
 
-// //delete
+//delete
 
-// app.delete("/posts/myposts/:id", remove);
+app.delete("/posts/myposts/:id", remove);
 
 
 app.listen(PORT, () => console.log(`listening on port ${PORT} `));
