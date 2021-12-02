@@ -2,6 +2,10 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 const {list, show, create, update, remove} = require('./controllers/posts')
+const cors = require('cors');
+app.use(cors({
+    origin: '*'
+}));
 
 const PORT = process.env.PORT || 5000;
 
